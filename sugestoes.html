@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Veja uma demonstração de planejamento e sugestões de tarefas.">
+  <title>Tempo em Foco | Planejamento</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <a class="brand" href="index.html">
+      <span class="brand-icon">◷</span> Tempo em Foco
+    </a>
+
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a class="nav-link" href="tarefas.html">Minhas tarefas</a>
+      <a class="nav-link active" href="sugestoes.html" aria-current="page">Planejamento</a>
+    </nav>
+
+    <a class="profile-pill" href="index.html">
+      <span class="avatar-icon">♙</span>
+      <span>Estudante</span>
+    </a>
+  </header>
+
+  <main class="page-shell">
+    <div class="page-heading">
+      <div>
+        <p class="eyebrow">VISÃO GERAL</p>
+        <h1>Seu planejamento</h1>
+        <p class="muted">Uma visão simples para ajudar você a decidir o que fazer primeiro.</p>
+      </div>
+      <a class="button button-secondary" href="tarefas.html">
+        ← Voltar ao planejamento
+      </a>
+    </div>
+
+    <section class="welcome-summary">
+      <div>
+        <span class="summary-kicker">SEU TEMPO DISPONÍVEL</span>
+        <div class="time-amount">3h <span>00min</span></div>
+        <p>Exemplo de disponibilidade informada para segunda-feira, das 18h às 21h.</p>
+      </div>
+
+      <div class="summary-graphic" aria-hidden="true">
+        <div class="clock-face">
+          <span>18</span>
+          <span>21</span>
+          <b>3h</b>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-grid" aria-label="Resumo das tarefas">
+      <article class="stat-card">
+        <span class="stat-icon blue">☷</span>
+        <div>
+          <p>Tarefas pendentes</p>
+          <strong>2</strong>
+          <small>Atividades cadastradas</small>
+        </div>
+      </article>
+
+      <article class="stat-card">
+        <span class="stat-icon orange">⚑</span>
+        <div>
+          <p>Prioridade alta</p>
+          <strong>1</strong>
+          <small>Requer atenção primeiro</small>
+        </div>
+      </article>
+
+      <article class="stat-card">
+        <span class="stat-icon green">◷</span>
+        <div>
+          <p>Tempo estimado</p>
+          <strong>3h</strong>
+          <small>Para as tarefas de exemplo</small>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel" aria-labelledby="suggestion-title">
+      <div class="panel-heading">
+        <div>
+          <span class="section-icon">✦</span>
+          <h2 id="suggestion-title">Sugestões para sua rotina</h2>
+        </div>
+        <span class="date-chip">Baseadas em regras simples</span>
+      </div>
+
+      <article class="suggestion-card">
+        <div class="suggestion-number">1</div>
+        <div class="suggestion-content">
+          <div class="suggestion-title-row">
+            <h3>Priorize o estudo para a prova</h3>
+            <span class="priority priority-high">Alta</span>
+          </div>
+          <p>
+            A tarefa tem prioridade alta. Reserve 2 horas do período disponível
+            para revisar o conteúdo antes do prazo.
+          </p>
+          <div class="suggestion-meta">
+            <span>◷ 120 minutos</span>
+            <span>▣ Prazo: 25/10/2026</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="suggestion-card">
+        <div class="suggestion-number">2</div>
+        <div class="suggestion-content">
+          <div class="suggestion-title-row">
+            <h3>Use o tempo restante para a leitura</h3>
+            <span class="priority priority-medium">Média</span>
+          </div>
+          <p>
+            Após o estudo, utilize a 1 hora restante para ler o artigo da
+            disciplina, se o período e as demais responsabilidades permitirem.
+          </p>
+          <div class="suggestion-meta">
+            <span>◷ 60 minutos</span>
+            <span>▣ Prazo: 27/10/2026</span>
+          </div>
+        </div>
+      </article>
+
+      <div class="notice-box">
+        <span class="notice-icon">i</span>
+        <p>
+          <strong>Importante:</strong> estas sugestões são demonstrativas e usam
+          regras predefinidas de prioridade, duração e prazo. Confirme se o
+          planejamento combina com sua rotina antes de segui-lo.
+        </p>
+      </div>
+
+      <div id="action-feedback" class="inline-message" role="status" hidden></div>
+
+      <div class="panel-actions">
+        <a class="button button-secondary" href="tarefas.html">
+          Editar tarefas e horários
+        </a>
+        <button class="button button-primary" id="refresh-button" type="button">
+          Atualizar demonstração ↻
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Tempo em Foco</span>
+    <span>Seu tempo, suas conquistas.</span>
+    <a href="index.html">Voltar à entrada</a>
+  </footer>
+
+  <script>
+    document.getElementById('refresh-button').addEventListener('click', () => {
+      const feedback = document.getElementById('action-feedback');
+
+      feedback.textContent =
+        'Demonstração atualizada. Para recalcular com outros dados, volte à tela de tarefas e ajuste as informações.';
+
+      feedback.hidden = false;
+    });
+  </script>
+</body>
+</html>

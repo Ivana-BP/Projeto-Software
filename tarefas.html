@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gerencie tarefas e horários disponíveis no Tempo em Foco.">
+  <title>Tempo em Foco | Tarefas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <a class="brand" href="index.html">
+      <span class="brand-icon">◷</span> Tempo em Foco
+    </a>
+
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a class="nav-link active" href="tarefas.html" aria-current="page">Minhas tarefas</a>
+      <a class="nav-link" href="sugestoes.html">Planejamento</a>
+    </nav>
+
+    <a class="profile-pill" href="index.html">
+      <span class="avatar-icon">♙</span>
+      <span>Estudante</span>
+    </a>
+  </header>
+
+  <main class="page-shell">
+    <div class="page-heading">
+      <div>
+        <p class="eyebrow">SEU PLANEJAMENTO</p>
+        <h1>Organize sua rotina</h1>
+        <p class="muted">Cadastre suas atividades e informe quando você tem tempo livre.</p>
+      </div>
+      <span class="date-chip">Exemplo demonstrativo</span>
+    </div>
+
+    <div class="content-grid">
+      <section class="panel" aria-labelledby="task-form-title">
+        <div class="panel-heading">
+          <div>
+            <span class="section-icon">＋</span>
+            <h2 id="task-form-title">Adicionar tarefa</h2>
+          </div>
+          <span class="required-note">* Obrigatório</span>
+        </div>
+
+        <form id="task-form" class="stack-form">
+          <div>
+            <label for="titulo">Nome da tarefa *</label>
+            <input id="titulo" name="titulo" maxlength="150"
+              placeholder="Ex.: Estudar para a prova" required>
+          </div>
+
+          <div>
+            <label for="descricao">Descrição (opcional)</label>
+            <textarea id="descricao" name="descricao" rows="2"
+              placeholder="Detalhes da atividade"></textarea>
+          </div>
+
+          <div class="form-row">
+            <div>
+              <label for="prazo">Prazo *</label>
+              <input id="prazo" name="prazo" type="date"
+                value="2026-10-25" required>
+            </div>
+            <div>
+              <label for="prioridade">Prioridade *</label>
+              <select id="prioridade" name="prioridade">
+                <option value="Alta">Alta</option>
+                <option value="Média">Média</option>
+                <option value="Baixa">Baixa</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="duracao">Duração estimada (minutos) *</label>
+            <input id="duracao" name="duracao" type="number"
+              min="1" max="1440" value="120" required>
+            <small class="field-help">Informe quanto tempo você acredita que precisará.</small>
+          </div>
+
+          <button class="button button-primary button-full" type="submit">
+            ＋ Salvar tarefa
+          </button>
+
+          <p id="task-feedback" class="inline-message" role="status" hidden></p>
+        </form>
+      </section>
+
+      <section class="panel" aria-labelledby="availability-title">
+        <div class="panel-heading">
+          <div>
+            <span class="section-icon">◷</span>
+            <h2 id="availability-title">Minha disponibilidade</h2>
+          </div>
+        </div>
+
+        <p class="muted small-copy">Informe um período livre para planejar suas atividades.</p>
+
+        <form id="availability-form" class="stack-form">
+          <div>
+            <label for="dia">Dia da semana *</label>
+            <select id="dia" name="dia">
+              <option>Segunda-feira</option>
+              <option>Terça-feira</option>
+              <option>Quarta-feira</option>
+              <option>Quinta-feira</option>
+              <option>Sexta-feira</option>
+              <option>Sábado</option>
+              <option>Domingo</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div>
+              <label for="inicio">Início *</label>
+              <input id="inicio" type="time" value="18:00" required>
+            </div>
+            <div>
+              <label for="fim">Fim *</label>
+              <input id="fim" type="time" value="21:00" required>
+            </div>
+          </div>
+
+          <button class="button button-secondary button-full" type="submit">
+            Salvar disponibilidade
+          </button>
+
+          <p id="availability-feedback" class="inline-message" role="status" hidden></p>
+        </form>
+
+        <div class="availability-summary">
+          <span class="summary-icon">✓</span>
+          <div>
+            <strong>Período cadastrado</strong>
+            <p id="availability-summary-text">Segunda-feira, das 18:00 às 21:00</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel task-list-panel" aria-labelledby="list-title">
+      <div class="panel-heading">
+        <div>
+          <span class="section-icon">☷</span>
+          <h2 id="list-title">Minhas tarefas</h2>
+        </div>
+        <span class="count-chip" id="task-count">2 tarefas</span>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Tarefa</th>
+              <th scope="col">Prazo</th>
+              <th scope="col">Prioridade</th>
+              <th scope="col">Duração</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody id="task-list">
+            <tr>
+              <td>
+                <strong>Estudar para a prova</strong>
+                <small>Revisar os conteúdos</small>
+              </td>
+              <td>25/10/2026</td>
+              <td><span class="priority priority-high">Alta</span></td>
+              <td>120 min</td>
+              <td><span class="status-dot"></span>Pendente</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Ler artigo da disciplina</strong>
+                <small>Leitura e anotações</small>
+              </td>
+              <td>27/10/2026</td>
+              <td><span class="priority priority-medium">Média</span></td>
+              <td>60 min</td>
+              <td><span class="status-dot"></span>Pendente</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel-actions">
+        <span class="muted small-copy">Os dados desta demonstração ficam apenas nesta página.</span>
+        <a class="button button-primary" href="sugestoes.html">
+          Calcular disponibilidade <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Tempo em Foco</span>
+    <span>Planeje com equilíbrio.</span>
+    <a href="index.html">Sair do protótipo</a>
+  </footer>
+
+  <script>
+    const taskForm = document.getElementById('task-form');
+    const taskList = document.getElementById('task-list');
+    let taskCount = 2;
+
+    taskForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      if (!taskForm.reportValidity()) return;
+
+      const title = document.getElementById('titulo').value.trim();
+      const dateValue = document.getElementById('prazo').value;
+      const date = dateValue
+        ? new Date(dateValue + 'T12:00:00').toLocaleDateString('pt-BR')
+        : 'Sem prazo';
+      const priority = document.getElementById('prioridade').value;
+      const duration = Number(document.getElementById('duracao').value);
+
+      if (!title || duration < 1) return;
+
+      const row = document.createElement('tr');
+
+      const cell = (content) => {
+        const td = document.createElement('td');
+        td.textContent = content;
+        return td;
+      };
+
+      const titleCell = document.createElement('td');
+      const strong = document.createElement('strong');
+      strong.textContent = title;
+      titleCell.appendChild(strong);
+
+      const priorityCell = document.createElement('td');
+      const badge = document.createElement('span');
+      badge.className = 'priority ' +
+        (priority === 'Alta' ? 'priority-high' :
+        priority === 'Média' ? 'priority-medium' : 'priority-low');
+      badge.textContent = priority;
+      priorityCell.appendChild(badge);
+
+      const statusCell = document.createElement('td');
+      const dot = document.createElement('span');
+      dot.className = 'status-dot';
+      statusCell.append(dot, document.createTextNode('Pendente'));
+
+      row.append(
+        titleCell,
+        cell(date),
+        priorityCell,
+        cell(duration + ' min'),
+        statusCell
+      );
+
+      taskList.appendChild(row);
+      taskCount++;
+
+      document.getElementById('task-count').textContent =
+        taskCount + (taskCount === 1 ? ' tarefa' : ' tarefas');
+
+      const feedback = document.getElementById('task-feedback');
+      feedback.textContent = 'Tarefa adicionada à lista de demonstração.';
+      feedback.hidden = false;
+      taskForm.reset();
+    });
+
+    document.getElementById('availability-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const start = document.getElementById('inicio').value;
+      const end = document.getElementById('fim').value;
+      const feedback = document.getElementById('availability-feedback');
+
+      if (!start || !end || start >= end) {
+        feedback.textContent =
+          'Informe um horário final posterior ao horário inicial.';
+        feedback.className = 'inline-message error-message';
+        feedback.hidden = false;
+        return;
+      }
+
+      const day = document.getElementById('dia').value;
+
+      document.getElementById('availability-summary-text').textContent =
+        day + ', das ' + start + ' às ' + end;
+
+      feedback.textContent =
+        'Disponibilidade atualizada nesta demonstração.';
+      feedback.className = 'inline-message';
+      feedback.hidden = false;
+    });
+  </script>
+</body>
+</html>
