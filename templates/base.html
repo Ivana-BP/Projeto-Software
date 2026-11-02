@@ -18,7 +18,49 @@
         {% endif %}
     {% endwith %}
 
+    <button
+        type="button"
+        id="theme-toggle"
+        class="theme-toggle"
+        aria-label="Ativar modo escuro"
+        aria-pressed="false">
+        🌙 Modo escuro
+    </button>
+
     {% block conteudo %}{% endblock %}
+
+    <script>
+        const botaoTema = document.getElementById("theme-toggle");
+        const temaSalvo = localStorage.getItem("tempo-em-foco-tema");
+
+        function aplicarTema(tema) {
+            const modoEscuro = tema === "escuro";
+
+            document.body.classList.toggle("dark-mode", modoEscuro);
+
+            botaoTema.textContent = modoEscuro
+                ? "☀️ Modo claro"
+                : "🌙 Modo escuro";
+
+            botaoTema.setAttribute(
+                "aria-label",
+                modoEscuro ? "Ativar modo claro" : "Ativar modo escuro"
+            );
+
+            botaoTema.setAttribute("aria-pressed", modoEscuro);
+
+            localStorage.setItem("tempo-em-foco-tema", tema);
+        }
+
+        aplicarTema(temaSalvo || "claro");
+
+        botaoTema.addEventListener("click", function () {
+            const modoEscuroAtivo =
+                document.body.classList.contains("dark-mode");
+
+            aplicarTema(modoEscuroAtivo ? "claro" : "escuro");
+        });
+    </script>
 
 </body>
 </html>
