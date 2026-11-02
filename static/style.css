@@ -1028,3 +1028,202 @@ td small {
     animation-duration: .01ms !important;
   }
 }
+
+/* =========================================
+   MODO ESCURO - TEMPO EM FOCO
+   ========================================= */
+
+.theme-toggle {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 1000;
+
+  min-height: 46px;
+  padding: 10px 16px;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  background: var(--surface);
+  color: var(--text);
+
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+
+  box-shadow: var(--shadow);
+}
+
+.theme-toggle:hover {
+  border-color: var(--blue);
+}
+
+body.dark-mode {
+  --navy: #d9e6ff;
+  --blue: #82adff;
+  --blue-dark: #a4c2ff;
+  --blue-soft: #263a58;
+  --text: #e5eaf3;
+  --muted: #aab7ca;
+  --border: #39485e;
+  --surface: #202b3b;
+  --page: #151d29;
+  --green: #75d6a8;
+  --orange: #ffc18a;
+  --shadow: 0 12px 34px rgba(0, 0, 0, .20);
+}
+
+/* Fundos principais */
+
+body.dark-mode .topbar,
+body.dark-mode .app-header,
+body.dark-mode .footer,
+body.dark-mode .login-layout,
+body.dark-mode .stat-card {
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* Tela de entrada */
+
+body.dark-mode .welcome-panel {
+  background: linear-gradient(145deg, #202f45 0%, #151d29 80%);
+}
+
+body.dark-mode .welcome-panel h1,
+body.dark-mode .feature h2,
+body.dark-mode .login-card h2 {
+  color: var(--navy);
+}
+
+body.dark-mode .lead {
+  color: var(--muted);
+}
+
+body.dark-mode .feature-icon,
+body.dark-mode .avatar-icon {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+/* Formulários */
+
+body.dark-mode label {
+  color: var(--text);
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background: #182333;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: #9ba9bd;
+}
+
+body.dark-mode input:focus,
+body.dark-mode textarea:focus,
+body.dark-mode select:focus {
+  border-color: var(--blue);
+  outline-color: #344c70;
+}
+
+/* Botões */
+
+body.dark-mode .button-secondary {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+body.dark-mode .button-secondary:hover {
+  background: var(--blue-soft);
+}
+
+body.dark-mode .text-button,
+body.dark-mode .link-button,
+body.dark-mode a {
+  color: var(--blue);
+}
+
+/* Navegação e cartões */
+
+body.dark-mode .brand,
+body.dark-mode .profile-pill,
+body.dark-mode .panel-heading h2,
+body.dark-mode .page-heading h1,
+body.dark-mode .suggestion-title-row h3,
+body.dark-mode td strong,
+body.dark-mode .stat-card strong {
+  color: var(--navy);
+}
+
+body.dark-mode .nav-link:hover,
+body.dark-mode .nav-link.active {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+body.dark-mode .panel,
+body.dark-mode .stat-card {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+/* Tabela */
+
+body.dark-mode th {
+  background: #263347;
+  color: var(--muted);
+}
+
+body.dark-mode th,
+body.dark-mode td {
+  border-bottom-color: var(--border);
+}
+
+/* Resumos e mensagens */
+
+body.dark-mode .availability-summary {
+  background: #20382f;
+  border-color: #355c49;
+}
+
+body.dark-mode .availability-summary strong,
+body.dark-mode .availability-summary p {
+  color: #b6e8ce;
+}
+
+body.dark-mode .notice-box {
+  background: #24354b;
+  border-color: #3c5272;
+}
+
+body.dark-mode .notice-box p {
+  color: #d1def1;
+}
+
+body.dark-mode .inline-message {
+  background: #20382f;
+  color: #b6e8ce;
+  border-color: #355c49;
+}
+
+body.dark-mode .error-message {
+  background: #40282d;
+  color: #ffc4c4;
+  border-color: #70434a;
+}
+
+/* Botão de alternância */
+
+body.dark-mode .theme-toggle {
+  background: #202b3b;
+  color: #e5eaf3;
+  border-color: #39485e;
+}
