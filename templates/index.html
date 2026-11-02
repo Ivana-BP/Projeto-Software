@@ -1,148 +1,86 @@
+{% extends "base.html" %}
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tempo em Foco: organize tarefas, prazos e disponibilidade.">
-  <title>Tempo em Foco | Entrar</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="topbar">
-    <a class="brand brand-small" href="index.html">
-      <span class="brand-icon">◷</span> Tempo em Foco
-    </a>
-    <span class="top-note">Organize seu tempo com mais tranquilidade</span>
-  </header>
+{% block conteudo %}
 
-  <main class="login-layout">
-    <section class="welcome-panel">
-      <div class="eyebrow">PLANEJE • ORGANIZE • CONQUISTE</div>
-      <h1>Seu tempo,<br><span>suas conquistas.</span></h1>
-      <p class="lead">
-        Organize suas tarefas, respeite seus prazos e encontre espaço para o que importa.
-      </p>
+<main class="login-layout">
+  <section class="welcome-panel">
+    <div class="eyebrow">PLANEJE • ORGANIZE • CONQUISTE</div>
+    <h1>Seu tempo,<br><span>suas conquistas.</span></h1>
+    <p class="lead">
+      Organize suas tarefas, respeite seus prazos e encontre espaço para o que importa.
+    </p>
 
-      <div class="feature-list">
-        <article class="feature">
-          <span class="feature-icon">✓</span>
-          <div>
-            <h2>Organize suas tarefas</h2>
-            <p>Cadastre e acompanhe suas atividades em um só lugar.</p>
-          </div>
-        </article>
-
-        <article class="feature">
-          <span class="feature-icon">◷</span>
-          <div>
-            <h2>Gerencie sua disponibilidade</h2>
-            <p>Visualize seus horários livres para planejar melhor.</p>
-          </div>
-        </article>
-
-        <article class="feature">
-          <span class="feature-icon">✦</span>
-          <div>
-            <h2>Receba sugestões</h2>
-            <p>Encontre alternativas para reorganizar sua rotina.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="login-panel" aria-labelledby="login-title">
-      <div class="login-card">
-        <div class="mini-logo">◷</div>
-        <p class="eyebrow">BEM-VINDO(A) DE VOLTA</p>
-        <h2 id="login-title">Acesse sua conta</h2>
-        <p class="muted">Use os dados fictícios para explorar o protótipo.</p>
-
-        <form id="login-form">
-          <label for="email">E-mail</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autocomplete="username"
-            placeholder="estudante@exemplo.com"
-            required
-          >
-
-          <label for="senha">Senha</label>
-          <input
-            id="senha"
-            name="senha"
-            type="password"
-            autocomplete="current-password"
-            placeholder="Digite qualquer senha"
-            required
-          >
-
-          <p class="form-hint">Protótipo demonstrativo: não use sua senha real.</p>
-
-          <p id="login-error" class="error-message" role="alert" hidden>
-            Preencha um e-mail válido e uma senha para continuar.
-          </p>
-
-          <button class="button button-primary button-full" type="submit">
-            Entrar <span aria-hidden="true">→</span>
-          </button>
-        </form>
-
-        <button class="text-button" type="button" id="forgot-button">
-          Esqueci minha senha
-        </button>
-
-        <p id="forgot-message" class="inline-message" role="status" hidden>
-          Recuperação de senha não implementada neste protótipo.
-        </p>
-
-        <div class="login-bottom">
-          <span class="avatar-icon" aria-hidden="true">♙</span>
-          <div>
-            <span class="muted">Ainda não tem uma conta?</span><br>
-            <button class="link-button" id="signup-button" type="button">
-              Criar conta
-            </button>
-          </div>
+    <div class="feature-list">
+      <article class="feature">
+        <span class="feature-icon">✓</span>
+        <div>
+          <h2>Organize suas tarefas</h2>
+          <p>Cadastre e acompanhe suas atividades em um só lugar.</p>
         </div>
+      </article>
 
-        <p id="signup-message" class="inline-message" role="status" hidden>
-          O cadastro de usuários será implementado em uma etapa futura.
-        </p>
+      <article class="feature">
+        <span class="feature-icon">◷</span>
+        <div>
+          <h2>Gerencie sua disponibilidade</h2>
+          <p>Visualize seus horários livres para planejar melhor.</p>
+        </div>
+      </article>
+
+      <article class="feature">
+        <span class="feature-icon">✦</span>
+        <div>
+          <h2>Receba sugestões</h2>
+          <p>Encontre alternativas para reorganizar sua rotina.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="login-panel" aria-labelledby="login-title">
+    <div class="login-card">
+      <div class="mini-logo">◷</div>
+      <p class="eyebrow">BEM-VINDO(A) DE VOLTA</p>
+      <h2 id="login-title">Acesse sua conta</h2>
+      <p class="muted">Entre com seu e-mail e sua senha.</p>
+
+      <form method="POST" action="{{ url_for('entrar') }}">
+        <label for="email">E-mail</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autocomplete="username"
+          placeholder="estudante@exemplo.com"
+          required
+        >
+
+        <label for="senha">Senha</label>
+        <input
+          id="senha"
+          name="senha"
+          type="password"
+          autocomplete="current-password"
+          placeholder="Digite sua senha"
+          required
+        >
+
+        <button class="button button-primary button-full" type="submit">
+          Entrar <span aria-hidden="true">→</span>
+        </button>
+      </form>
+
+      <div class="login-bottom">
+        <span class="avatar-icon" aria-hidden="true">♙</span>
+        <div>
+          <span class="muted">Ainda não tem uma conta?</span><br>
+          <a class="link-button" href="{{ url_for('cadastro') }}">
+            Criar conta
+          </a>
+        </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>
 
-  <footer class="footer">
-    <span>Tempo em Foco</span>
-    <span>Seu tempo, suas conquistas.</span>
-    <span>Protótipo acadêmico</span>
-  </footer>
-
-  <script>
-    const form = document.getElementById('login-form');
-
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-
-      if (!form.reportValidity()) {
-        document.getElementById('login-error').hidden = false;
-        return;
-      }
-
-      // Demonstração: não autentica usuários reais.
-      window.location.href = 'tarefas.html';
-    });
-
-    document.getElementById('forgot-button').addEventListener('click', () => {
-      document.getElementById('forgot-message').hidden = false;
-    });
-
-    document.getElementById('signup-button').addEventListener('click', () => {
-      document.getElementById('signup-message').hidden = false;
-    });
-  </script>
-</body>
-</html>
+{% endblock %}

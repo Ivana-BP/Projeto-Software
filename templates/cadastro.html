@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<section class="container">
+    <h2>Criar conta</h2>
+    <p>Cadastre-se para começar a organizar sua rotina com o Tempo em Foco.</p>
+
+    <form action="{{ url_for('cadastro') }}" method="POST">
+
+        <div class="form-group">
+            <label for="nome">Nome completo</label>
+            <input
+                type="text"
+                id="nome"
+                name="nome"
+                maxlength="100"
+                placeholder="Digite seu nome"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                maxlength="150"
+                placeholder="Digite seu e-mail"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="senha">Senha</label>
+            <input
+                type="password"
+                id="senha"
+                name="senha"
+                minlength="8"
+                placeholder="Crie uma senha"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="confirmar_senha">Confirmar senha</label>
+            <input
+                type="password"
+                id="confirmar_senha"
+                name="confirmar_senha"
+                minlength="8"
+                placeholder="Digite a senha novamente"
+                required
+            >
+        </div>
+
+        <button type="submit">Cadastrar</button>
+
+    </form>
+
+    <p>
+        Já possui uma conta?
+        <a href="{{ url_for('index') }}">Entrar</a>
+    </p>
+</section>
+
+{% endblock %}
